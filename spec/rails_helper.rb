@@ -42,6 +42,10 @@ RSpec.configure do |config|
   end
 
   config.after(:each) do
+    if self.class.include?(Capybara::DSL)
+      Capybara.reset_sessions!
+      Capybara.use_default_driver
+    end
     DatabaseCleaner.clean
   end
 

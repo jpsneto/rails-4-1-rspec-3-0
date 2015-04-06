@@ -22,4 +22,8 @@ feature 'User management' do
     end
     expect(page).to have_content 'newuser@example.com'
   end
+
+  scenario "remove a existing user", js: true do
+    
+  end
 end
