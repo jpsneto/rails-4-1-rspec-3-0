@@ -1,10 +1,9 @@
-require 'rspec'
+require 'rails_helper'
 
 describe User do
-
-  it 'do not create a use without email' do
-
-
-    expect(user.erros).to include("password can't blank")
+  it 'is invalid without email' do
+    user = User.new(password: 'secret123')
+    user.valid?
+    expect(user.errors[:email]).to include("can't be blank")
   end
 end

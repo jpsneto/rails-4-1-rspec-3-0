@@ -21,7 +21,7 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: http://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0',          group: :doc
+gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: http://github.com/rails/spring
 #gem 'spring',        group: :development
@@ -38,24 +38,30 @@ gem 'bcrypt', '~> 3.1.7'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'tzinfo-data', platforms: [:x64_mingw, :mingw, :mswin]# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:x64_mingw, :mingw, :mswin] # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 
 gem 'bootstrap-sass', '~> 3.1.1'
 
 group :development, :test do
-  gem "rspec-rails"
-  gem "factory_girl_rails"
   gem 'guard-rspec'
+  gem 'guard-livereload'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  #gem "guard"
+  gem 'guard-spork', '~> 1.5.1'
+  gem 'spork-rails', github: 'sporkrb/spork-rails'
+  gem 'childprocess'
   #gem 'spring-commands-rspec'
 end
 
 group :test do
-  gem "faker"
-  gem "capybara"
-  gem "database_cleaner"
-  gem "launchy"
-  gem "selenium-webdriver"
-  gem 'shoulda-matchers'
-  gem 'poltergeist' 
+  gem 'faker'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'selenium-webdriver'
+  gem 'shoulda-matchers', require: false
+  gem 'poltergeist'
+
 end
 

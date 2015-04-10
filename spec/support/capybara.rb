@@ -1,6 +1,12 @@
+require 'capybara/rails'
+require 'capybara/rspec'
+
 Capybara.register_driver :selenium do |app|
   Capybara::Selenium::Driver.new(app, :browser => :chrome)
 end
+
+#caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {"args" => [ "--start-maximized" ]})
+#$driver = Capybara::Selenium::Driver.new(app, {:browser => :chrome, :desired_capabilities => caps})
 
 #Capybara.asset_host = 'http://localhost:3000'
 

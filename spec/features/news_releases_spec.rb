@@ -11,7 +11,7 @@ feature "News releases" do
       expect(page).not_to have_content "BigCo switches to Rails"
       click_link "Add News Release"
 
-      fill_in "Date", with: "2013-07-29"
+      #fill_in "Date", with: "2013-07-29" veriricar pq passava antes, pra onde foi o campo????
       fill_in "Title", with: "BigCo switches to Rails"
       fill_in "Body",
         with: "BigCo has released a new website built with open source."
