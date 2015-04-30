@@ -4,11 +4,16 @@
   <tr>
     <th>Email</th>
     <th>Admin?</th>
+    <th>Actions</th>
   </tr>
   <% @users.each do |user| %>
     <tr>
       <td><%= user.email %>
       <td><%= user.admin? %>
+      <td>
+        <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-xs btn-default' %>
+        <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
+      </td>
     </tr>
   <% end %>
 </table>

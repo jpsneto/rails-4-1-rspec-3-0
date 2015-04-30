@@ -11,37 +11,55 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140916022631) do
+ActiveRecord::Schema.define(version: 20150430173708) do
 
-  create_table "contacts", force: true do |t|
-    t.string   "firstname"
-    t.string   "lastname"
-    t.string   "email"
+  create_table "activities", force: :cascade do |t|
+    t.string "resource"
+    t.string "activity"
+  end
+
+  create_table "activities_roles", id: false, force: :cascade do |t|
+    t.integer "role_id",     null: false
+    t.integer "activity_id", null: false
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string   "firstname",  limit: 255
+    t.string   "lastname",   limit: 255
+    t.string   "email",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "news_releases", force: true do |t|
-    t.string   "title"
+  create_table "news_releases", force: :cascade do |t|
+    t.string   "title",       limit: 255
     t.date     "released_on"
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "phones", force: true do |t|
+  create_table "phones", force: :cascade do |t|
     t.integer  "contact_id"
-    t.string   "phone"
-    t.string   "phone_type"
+    t.string   "phone",      limit: 255
+    t.string   "phone_type", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "phones", ["contact_id"], name: "index_phones_on_contact_id"
 
-  create_table "users", force: true do |t|
-    t.string   "email"
-    t.string   "password_digest"
+# Could not dump table "roles" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
+
+  create_table "roles_users", id: false, force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "role_id", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email",           limit: 255
+    t.string   "password_digest", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "admin"

@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 feature 'User management' do
+    before :each do    
+	  puts controller.controller_path
+    end
   scenario "adds a new user", js: true do
     admin = create(:admin)
     sign_in admin

@@ -1,6 +1,7 @@
 class NewsReleasesController < ApplicationController
   before_action :authenticate, except: [:index, :show]
   before_action :set_news_release, only: [:show, :edit, :update, :destroy]
+  #after_action :verify_authorized, only: [:new, :destroy]
 
   # GET /news_releases
   # GET /news_releases.json
@@ -16,6 +17,7 @@ class NewsReleasesController < ApplicationController
   # GET /news_releases/new
   def new
     @news_release = NewsRelease.new
+    #authorize @news_release
   end
 
   # GET /news_releases/1/edit

@@ -5,6 +5,7 @@ describe UsersController do
     before :each do
       @user = create(:user)
       session[:user_id] = @user.id
+	  puts controller.controller_path
     end
 
     describe 'GET #index' do
