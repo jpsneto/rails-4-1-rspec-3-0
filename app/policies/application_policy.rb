@@ -7,7 +7,8 @@ class ApplicationPolicy
   end
 
   def user_activities
-    @user.roles.select(:activities).distinct.map(&:activities).flatten
+    #@user.roles.select(:activities).distinct.map(&:activities).flatten
+    @user.roles.distinct.map(&:activities).flatten
   end
 
   def inferred_activity(method)

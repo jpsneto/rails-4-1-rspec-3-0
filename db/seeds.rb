@@ -16,3 +16,8 @@ Activity.create!([{resource: 'role', activity: 'index'},
                   {resource: 'user', activity: 'update'},
                   {resource: 'user', activity: 'delete'}
                  ])
+
+Role.create!([{name: 'Manager user', activities: Activity.where(resource: 'user')},
+              {name: 'Manager role', activities: Activity.where(resource: 'role')}
+             ])
+

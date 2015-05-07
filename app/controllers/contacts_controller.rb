@@ -23,6 +23,7 @@ class ContactsController < ApplicationController
     %w(home office mobile).each do |phone|
       @contact.phones.build(phone_type: phone)
     end
+    authorize @contact
   end
 
   # GET /contacts/1/edit

@@ -14,10 +14,10 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError, with: :permission_denied
 
   # Enforces access right checks for individuals resources
-  #after_filter :verify_authorized, :except => :index
+  after_filter :verify_authorized, :except => :index
 
   # Enforces access right checks for collections
-  #after_filter :verify_policy_scoped, :only => :index
+  # after_filter :verify_policy_scoped, :only => :index
 
   def authenticate
     redirect_to login_url, alert: 'Please log in first' if current_user.nil?
@@ -47,6 +47,7 @@ class ApplicationController < ActionController::Base
   helper_method :administrator?
 
   def permission_denied
-    head 403
+    flash[:alert] = "You are not authorized to perform this action."
+    redirect_to(root_path)
   end
 end

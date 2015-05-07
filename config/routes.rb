@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :sessions
 
   resources :contacts
+  resources :roles
 
   root 'contacts#index'
 end

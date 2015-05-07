@@ -17,7 +17,7 @@ class NewsReleasesController < ApplicationController
   # GET /news_releases/new
   def new
     @news_release = NewsRelease.new
-    #authorize @news_release
+    authorize @news_release
   end
 
   # GET /news_releases/1/edit

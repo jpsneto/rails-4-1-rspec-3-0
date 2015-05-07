@@ -49,8 +49,11 @@ ActiveRecord::Schema.define(version: 20150430173708) do
 
   add_index "phones", ["contact_id"], name: "index_phones_on_contact_id"
 
-# Could not dump table "roles" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "roles_users", id: false, force: :cascade do |t|
     t.integer "user_id", null: false
